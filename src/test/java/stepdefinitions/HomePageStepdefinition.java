@@ -210,7 +210,7 @@ public class HomePageStepdefinition {
 
 
     }
-    //--------------------------------------
+    //-------------------------------------- zafer
     @Given("Anasayfada Latest News bilgilerinin kayan yazi seklinde ve gorunur oldugu dogrulanir")
     public void anasayfada_latest_news_bilgilerinin_kayan_yazi_seklinde_ve_gorunur_oldugu_dogrulanir() {
         boolean isScrolling = homePage.latestNewsAlani.getAttribute("behavior").contains("scroll");
@@ -223,4 +223,10 @@ public class HomePageStepdefinition {
     public void browserKapatilir() {
         Driver.closeDriver();
     }
+    @Given("Anasayfada logo ve ust bardaki menu basliklarinin varligi dogrulanir")
+    public void anasayfada_logo_ve_ust_bardaki_menu_basliklarinin_varligi_dogrulanir() {
+    ReusableMethods.isDisplayed(homePage.homepageLogo,"HomePage Logo Gorunur Degil");
+
+    }
+
 }
