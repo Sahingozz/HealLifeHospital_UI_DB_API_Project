@@ -108,4 +108,18 @@ public class HomePage extends Base{
     public WebElement galleryAciklama;
 
 
+    //---------zafer
+
+    //Homepage -> Latest News Elementi Text
+    @FindBy(xpath = "//div[text()='Latest News']")
+    public WebElement latestNewsText;
+
+    // Homepage -> Latest News Kayan Element
+
+    @FindBy(xpath = "//marquee[@behavior ='scroll']")
+    public WebElement latestNewsAlani;
+
+
+
+
 }

@@ -2,9 +2,11 @@ package stepdefinitions;
 
 
 import com.github.javafaker.Faker;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.AdminPage;
@@ -207,5 +209,18 @@ public class HomePageStepdefinition {
         homePage.iframeCardPayButton.click();
 
 
+    }
+    //--------------------------------------
+    @Given("Anasayfada Latest News bilgilerinin kayan yazi seklinde ve gorunur oldugu dogrulanir")
+    public void anasayfada_latest_news_bilgilerinin_kayan_yazi_seklinde_ve_gorunur_oldugu_dogrulanir() {
+        boolean isScrolling = homePage.latestNewsAlani.getAttribute("behavior").contains("scroll");
+        Assert.assertTrue("Latest News alani kaymıyor !", isScrolling);
+        ReusableMethods.isDisplayed(homePage.latestNewsText,"Latest News Text görünmüyor");
+
+    }
+
+    @Given("Browser kapatilir")
+    public void browserKapatilir() {
+        Driver.closeDriver();
     }
 }
