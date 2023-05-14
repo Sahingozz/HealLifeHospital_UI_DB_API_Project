@@ -8,12 +8,17 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AdminPage;
 import pages.DoctorPage;
 import pages.HomePage;
 import pages.PatientPage;
 import utilities.*;
+
+import java.time.Duration;
 
 public class HomePageStepdefinition {
 
@@ -232,6 +237,21 @@ public class HomePageStepdefinition {
         ReusableMethods.isDisplayed(homePage.aboutUsLink, "HomePage üst bar'da About us Link Gorunur Degil");
         ReusableMethods.isDisplayed(homePage.GalleryLink, "HomePage üst bar'da Gallery Link Gorunur Degil");
         ReusableMethods.isDisplayed(homePage.contactUsLinkUst, "HomePage üst bar'da Contact Us Link Gorunur Degil");
+
+    }
+    @Given("Anasayfada logo tiklanir ve sayfanin yeniden cagrildigi \\(refresh) dogrulanir")
+    public void anasayfada_logo_tiklanir_ve_sayfanin_yeniden_cagrildigi_refresh_dogrulanir() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        homePage.homepageLogo.click();
+        WebElement refreshKontrol = wait.until(ExpectedConditions.visibilityOf(homePage.latestNews1stElement));
+        boolean isRefreshed;
+        if(refreshKontrol !=null){
+            isRefreshed=true;
+        }else{
+            isRefreshed=false;
+        }
+        Assert.assertTrue("Sayfa yenilenemedi", isRefreshed);
+
 
     }
 
