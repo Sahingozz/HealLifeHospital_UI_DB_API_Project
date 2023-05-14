@@ -223,9 +223,15 @@ public class HomePageStepdefinition {
     public void browserKapatilir() {
         Driver.closeDriver();
     }
+
     @Given("Anasayfada logo ve ust bardaki menu basliklarinin varligi dogrulanir")
     public void anasayfada_logo_ve_ust_bardaki_menu_basliklarinin_varligi_dogrulanir() {
-    ReusableMethods.isDisplayed(homePage.homepageLogo,"HomePage Logo Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.homepageLogo, "HomePage Logo Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.homeLinkUst, "HomePage üst bar'da Home Link Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.latestNewsText, "HomePage üst bar'da Latest News (Events) Link Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.aboutUsLink, "HomePage üst bar'da About us Link Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.GalleryLink, "HomePage üst bar'da Gallery Link Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.contactUsLinkUst, "HomePage üst bar'da Contact Us Link Gorunur Degil");
 
     }
 

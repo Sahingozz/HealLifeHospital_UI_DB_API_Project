@@ -119,7 +119,32 @@ public class HomePage extends Base{
     @FindBy(xpath = "//marquee[@behavior ='scroll']")
     public WebElement latestNewsAlani;
 
+    // Homepage -> Home linki üst bar
+    @FindBy (xpath = "(//a[text()='Home'])[1]")
+    public WebElement homeLinkUst;
 
+    // Homepage -> Appointment linki üst bar
+    @FindBy (xpath = "//a[text()='Appointment']")
+    public WebElement appointmentLink;
 
+    // Homepage -> Events linki üst bar
+    @FindBy (xpath = "//a[text()='Events']")
+    public WebElement EventsLink;
+
+    // Homepage -> About Us linki üst bar
+    @FindBy (xpath = "(//a[@href='#'])[1]")
+    public WebElement aboutUsLink;
+
+    // Homepage -> Gallery linki üst bar
+    @FindBy (xpath = "(//a[text()='Gallery'])[1]")
+    public WebElement GalleryLink;
+
+    // Homepage -> Contact Us linki üst bar
+    @FindBy (xpath = "(//a[text()='Contact Us'])[1]")
+    public WebElement contactUsLinkUst;
+
+    // Homepage -> Latest News 1st element
+    @FindBy (xpath = "(//div[@class='datenews'])[1]")
+    public WebElement latestNews1stElement;
 
 }
