@@ -147,4 +147,7 @@ public class HomePage extends Base{
     @FindBy (xpath = "(//div[@class='datenews'])[1]")
     public WebElement latestNews1stElement;
 
+    //HomePage ->About Us -> About Hospitals linki
+    @FindBy (xpath = "//*[text()='About Hospitals']")
+    public WebElement aboutHospitalsLink;
 }

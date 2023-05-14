@@ -255,4 +255,53 @@ public class HomePageStepdefinition {
 
     }
 
+    @Given("Anasayfada ust barda bulunan home linki tiklanir ve anasayfada kaldigi dogrulanir")
+    public void anasayfada_ust_barda_bulunan_home_linki_tiklanir_ve_anasayfada_kaldigi_dogrulanir() {
+        String expectedHomeUrl ="https://qa.heallifehospital.com/";
+        homePage.homeLinkUst.click();
+        String actualHomeUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expectedHomeUrl,actualHomeUrl,"ilgili sayfaya yönlendirmiyor");
+    }
+    @Given("Anasayfada ust barda Appointment linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_ust_barda_appointment_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        String expAppointmentUrl ="https://qa.heallifehospital.com/form/appointment";
+                homePage.appointmentLink.click();
+        String actualAppointmentUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expAppointmentUrl,actualAppointmentUrl,"ilgili sayfaya yönlendirmiyor");
+    }
+    @Given("Anasayfada ust barda Latest News linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_ust_barda_latest_news_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        String expLatestNewsUrl = "https://qa.heallifehospital.com/read/from-the-harvard-university-cell-science-course-prof-dr-alexander-smith-will-attend-the-cell-science-panel-to-be-held-in-our-hospital-as-a-speaker";
+        ReusableMethods.wait(3);
+        homePage.latestNews1stElement.click();
+        String actualLatestNewsUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expLatestNewsUrl, actualLatestNewsUrl, "ilgili sayfaya yönlendirilmedi");
+    }
+    @Given("Anasayfada About Us linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_about_us_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        homePage.aboutUsLink.click();
+        boolean isAboutUsLink ;
+        if(homePage.aboutHospitalsLink.isDisplayed()){
+            isAboutUsLink=true;
+        }else{
+            isAboutUsLink=false;
+        }
+        Assert.assertTrue("About Us linki calismiyor", isAboutUsLink);
+    }
+    @Given("Anasayfada Gallery linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_gallery_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        String expGalleryUrl = "https://qa.heallifehospital.com/page/gallery";
+        homePage.GalleryLink.click();
+        String actualGalleryUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expGalleryUrl, actualGalleryUrl, "ilgili sayfaya yönlendirilmedi");
+    }
+    @Given("Anasayfada Contact Us linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_contact_us_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        String expContactUsUrl = "https://qa.heallifehospital.com/page/contact-us";
+        homePage.contactUsLinkUst.click();
+        String actualContactUsUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expContactUsUrl, actualContactUsUrl, "ilgili sayfaya yönlendirilmedi");
+    }
+
+
 }
