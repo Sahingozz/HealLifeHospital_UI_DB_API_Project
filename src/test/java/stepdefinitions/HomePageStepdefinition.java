@@ -311,6 +311,31 @@ public class HomePageStepdefinition {
 
     }
 
+    @Given("Contact Us sayfasinda mesaj gondermek icin gerekli text alanlari oldugu dogrulanir")
+    public void contact_us_sayfasinda_mesaj_gondermek_icin_gerekli_text_alanlari_oldugu_dogrulanir() {
+        homePage.contactUsLinkUst.click();
+        ReusableMethods.isDisplayed(homePage.contactUsNameText, "Contact Us bölümünde Name Text alanı görünmüyor");
+        ReusableMethods.isEnabled(homePage.contactUsNameText, "Contact Us bölümünde Name Text alanına giriş yapılamıyor");
+        ReusableMethods.isDisplayed(homePage.contactUsEmailText, "Contact Us bölümünde Email Text alanı görünmüyor");
+        ReusableMethods.isEnabled(homePage.contactUsEmailText, "Contact Us bölümünde Email Text alanına giriş yapılamıyor");
+        ReusableMethods.isDisplayed(homePage.contactUsSubjectText,"Contact Us bölümünde Subject Text alanı görünmüyor");
+        ReusableMethods.isEnabled(homePage.contactUsSubjectText,"Contact Us bölümünde Subject Text alanına giriş yapılamıyor");
+        ReusableMethods.isDisplayed(homePage.contactUsDecriptionText, "Contact Us bölümünde Description Text alanı görünmüyor");
+        ReusableMethods.isEnabled(homePage.contactUsDecriptionText, "Contact Us bölümünde Description Text alanına giriş yapılamıyor");
+    }
+
+    @Given("Anasayfada ust barda bulunan contact us sayfasina gidir, bilgiler girilir ve mesaj submit edilir")
+    public void anasayfada_ust_barda_bulunan_contact_us_sayfasina_gidir_bilgiler_girilir_ve_mesaj_submit_edilir() {
+        homePage.contactUsLinkUst.click();
+        homePage.contactUsNameText.sendKeys(faker.name().fullName());
+        homePage.contactUsEmailText.sendKeys(faker.internet().emailAddress());
+        homePage.contactUsSubjectText.sendKeys(faker.lorem().sentence());
+        homePage.contactUsDecriptionText.sendKeys(faker.lorem().paragraph());
+        homePage.contactUsSubmitButonu.click();
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOf(homePage.contactUsMesajOnayText));
+
+    }
 
 
 

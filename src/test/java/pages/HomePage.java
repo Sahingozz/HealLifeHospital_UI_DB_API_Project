@@ -153,18 +153,26 @@ public class HomePage extends Base{
 
     // HomePage -> Contact Us -> NameText alani
     @FindBy (xpath = "//input[@placeholder=' Name']")
-    WebElement contactUsNameText ;
+    public WebElement contactUsNameText ;
 
     // HomePage -> Contact Us -> EmailText alani
     @FindBy (xpath = "//input[@placeholder=' Email']")
-    WebElement contactUsEmailText ;
+    public WebElement contactUsEmailText ;
 
     // HomePage -> Contact Us -> SubjectText alani
     @FindBy (xpath = "//input[@placeholder=' Subject']")
-    WebElement contactUsSubjectText ;
+    public WebElement contactUsSubjectText ;
 
     // HomePage -> Contact Us -> DescriptionText alani
-    @FindBy (xpath = "//input[@placeholder=' Name']")
-    WebElement contactUsDecriptionText ;
+    @FindBy (xpath = "//textarea[@name='description']")
+    public WebElement contactUsDecriptionText ;
+
+    // HomePage -> Contact Us -> Submit butonu
+    @FindBy (xpath = "//input[@type='submit']")
+    public WebElement contactUsSubmitButonu ;
+
+    // Contact Us -> Submit-> Mesaj gönderildi onay text
+    @FindBy (xpath = "//div[@class='alert alert-success']")
+    public WebElement contactUsMesajOnayText;
 
 }
