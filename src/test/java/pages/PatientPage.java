@@ -16,4 +16,10 @@ public class PatientPage extends Base{
 
     @FindBy(xpath = "(//div[@class='box-tab-header']//h3)[2]")
     public WebElement componentIssueText;
+
+    //-----------------Zafer
+
+    //Patient -> user(patient) login username
+   // @FindBy (xpath = "//")
+
 }

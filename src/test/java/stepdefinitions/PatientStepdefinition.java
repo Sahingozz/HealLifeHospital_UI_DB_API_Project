@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -35,6 +36,14 @@ public class PatientStepdefinition {
     public void kullanici_PATIENT_sidebar_menuden_secenege_tıklar(Integer index) {
         WebElement xpath = Driver.getDriver().findElement(By.xpath("(//ul[@class='sidebar-menu verttop2']//li)["+index+"]"));
         xpath.click();
+    }
+
+    //---------------Zafer
+
+
+    @And("Kullanici bilgilerini girerek hasta paneline giris yapar")
+    public void kullaniciBilgileriniGirerekHastaPanelineGirisYapar() {
+
     }
 
 

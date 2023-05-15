@@ -175,4 +175,13 @@ public class HomePage extends Base{
     @FindBy (xpath = "//div[@class='alert alert-success']")
     public WebElement contactUsMesajOnayText;
 
+    // Contact Us -> harita elementi
+    @FindBy (xpath = "//div[@class='mapwrapper=']")
+    public WebElement googleMaps;
+
+    // Contact Us -> harita elementi adres yazı kartı
+    @FindBy (xpath = "//div[@class='place-desc-large']")
+    public WebElement contactUsMapCard;
+
+
 }

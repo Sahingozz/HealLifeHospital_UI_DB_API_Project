@@ -10,6 +10,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AdminPage;
@@ -18,6 +19,7 @@ import pages.HomePage;
 import pages.PatientPage;
 import utilities.*;
 
+import java.io.IOException;
 import java.time.Duration;
 
 public class HomePageStepdefinition {
@@ -302,6 +304,8 @@ public class HomePageStepdefinition {
         String actualContactUsUrl = Driver.getDriver().getCurrentUrl();
         ReusableMethods.verifyAssertTrue(expContactUsUrl, actualContactUsUrl, "ilgili sayfaya yönlendirilmedi");
     }
+
+    //No Name Section ... do not include to GitHub original Project
     @Given("Anasayfada header bolumunde contact us linki tiklanir ve ilgili sayfaya gittigi dogrulanir")
     public void anasayfada_header_bolumunde_contact_us_linki_tiklanir_ve_ilgili_sayfaya_gittigi_dogrulanir() {
         String expContactUsUrl = "https://qa.heallifehospital.com/page/contact-us";
@@ -336,6 +340,25 @@ public class HomePageStepdefinition {
         wait.until(ExpectedConditions.visibilityOf(homePage.contactUsMesajOnayText));
 
     }
+    @Given("Contact Us sayfasini gidilir ve haritanin hastane lokasyonunu gosterdigi dogrulanir")
+    public void contact_us_sayfasini_gidilir_ve_haritanin_hastane_lokasyonunu_gosterdigi_dogrulanir() throws IOException {
+
+        homePage.contactUsLinkUst.click();
+        Actions actions = new Actions(Driver.getDriver());
+        actions.scrollByAmount(500,500).perform();
+        Driver.getDriver().switchTo().frame(homePage.googleMaps.findElement(By.tagName("iframe")));
+        // System.out.println(homePage.contactUsMapCard.getText());
+        String hastaneCadde = "King Street";
+
+        Assert.assertTrue("Hastane adresi haritada gösterilmiyor"
+                ,homePage.contactUsMapCard.getText().contains(hastaneCadde));
+     ReusableMethods.getScreenshot(homePage.contactUsMapCard.getText());
+        Driver.quitDriver();
+
+    }
+    //--------- end of non-inclusive Project Part--------- zafer
+
+
 
 
 

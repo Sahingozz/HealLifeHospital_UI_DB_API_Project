@@ -1,19 +1,11 @@
+Feature: US_029 Kullanici (hastanin) kendi panelinde Kan Bankasi bolumunde islemler yapacaktir
 
-  Feature: US_029 Bir kullanici olarak hastane yonetimiyle iletisim icin Contact Us sayfasinin olmasini istiyorum
+  Background: Kullanici login bolumune gidilir
+    Given Kullanici tarayicida "patientURL"e gider
+    And Kullanici bilgilerini girerek hasta paneline giris yapar
 
-    Background: Test oncesi yapilacak adimlar
-      * Kullanici tarayicida "heallifeURL"e gider
+  @us_2901
+  Scenario: TC_01 Dashboard sidebar'inda Blood Bank menu basligi olmali ve tiklaninca yonlenmeli
+    Given Blood Bank linkine tiklanir ve ilgili sayfaya yonlendirildigi dogrulanir
+    And Browser kapatilir
 
-    Scenario: TC_01 Anasayfada header bolumunde Contact Us linki tiklandiginda ilgili sayfaya gittigi dogrulanir
-      Given Anasayfada header bolumunde contact us linki tiklanir ve ilgili sayfaya gittigi dogrulanir
-      * Browser kapatilir
-
-    Scenario: TC_02 Contact Us sayfasina gidilir ve mesaj gondermek icin gerekli text alanlari oldugu dogrulanir
-      Given Contact Us sayfasinda mesaj gondermek icin gerekli text alanlari oldugu dogrulanir
-      * Browser kapatilir
-
-    @us_029
-
-    Scenario: TC_03 Contact Us sayfasındaki bilgi alanlarina giris yapilip, mesaj gonderilebildigi dogrulanir
-      Given Anasayfada ust barda bulunan contact us sayfasina gidir, bilgiler girilir ve mesaj submit edilir
-      * Browser kapatilir
