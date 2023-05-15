@@ -1,4 +1,4 @@
-@wip1
+@wip4
 Feature: US_002 Bir kullanici olarak Ana Sayfa üst barinda site ici erisimleri kolaylastiracak
   menü basliklarininin olmasini istiyorum.
 
@@ -16,7 +16,7 @@ Feature: US_002 Bir kullanici olarak Ana Sayfa üst barinda site ici erisimleri 
   Scenario: TC_03 Ana sayfa ust barinda site logosuna tiklandiginda ana sayfayi yeniledigi dogrulanmali.
     Given Anasayfada logo tiklanir ve sayfanin yeniden cagrildigi (refresh) dogrulanir
     * Browser kapatilir
-@wip4
+
   Scenario: TC_04 Ana sayfa ust barindaki basliklara tiklandiginda ilgili sayfalara yönlendirildigi dogrulanmali
     Given Anasayfada ust barda bulunan home linki tiklanir ve anasayfada kaldigi dogrulanir
     And Anasayfada ust barda Appointment linki tiklanir ve ilgili sayfanin acildigi dogrulanir
