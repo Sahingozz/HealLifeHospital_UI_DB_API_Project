@@ -150,4 +150,21 @@ public class HomePage extends Base{
     //HomePage ->About Us -> About Hospitals linki
     @FindBy (xpath = "//*[text()='About Hospitals']")
     public WebElement aboutHospitalsLink;
+
+    // HomePage -> Contact Us -> NameText alani
+    @FindBy (xpath = "//input[@placeholder=' Name']")
+    WebElement contactUsNameText ;
+
+    // HomePage -> Contact Us -> EmailText alani
+    @FindBy (xpath = "//input[@placeholder=' Email']")
+    WebElement contactUsEmailText ;
+
+    // HomePage -> Contact Us -> SubjectText alani
+    @FindBy (xpath = "//input[@placeholder=' Subject']")
+    WebElement contactUsSubjectText ;
+
+    // HomePage -> Contact Us -> DescriptionText alani
+    @FindBy (xpath = "//input[@placeholder=' Name']")
+    WebElement contactUsDecriptionText ;
+
 }

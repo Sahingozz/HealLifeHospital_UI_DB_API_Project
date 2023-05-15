@@ -302,6 +302,17 @@ public class HomePageStepdefinition {
         String actualContactUsUrl = Driver.getDriver().getCurrentUrl();
         ReusableMethods.verifyAssertTrue(expContactUsUrl, actualContactUsUrl, "ilgili sayfaya yönlendirilmedi");
     }
+    @Given("Anasayfada header bolumunde contact us linki tiklanir ve ilgili sayfaya gittigi dogrulanir")
+    public void anasayfada_header_bolumunde_contact_us_linki_tiklanir_ve_ilgili_sayfaya_gittigi_dogrulanir() {
+        String expContactUsUrl = "https://qa.heallifehospital.com/page/contact-us";
+        homePage.contactUsLinkUst.click();
+        String actualContactUsUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expContactUsUrl, actualContactUsUrl, "ilgili sayfaya yönlendirilmedi");
+
+    }
+
+
+
 
 
 }
