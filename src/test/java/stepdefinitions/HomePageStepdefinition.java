@@ -8,12 +8,17 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AdminPage;
 import pages.DoctorPage;
 import pages.HomePage;
 import pages.PatientPage;
 import utilities.*;
+
+import java.time.Duration;
 
 public class HomePageStepdefinition {
 
@@ -223,10 +228,80 @@ public class HomePageStepdefinition {
     public void browserKapatilir() {
         Driver.closeDriver();
     }
+
     @Given("Anasayfada logo ve ust bardaki menu basliklarinin varligi dogrulanir")
     public void anasayfada_logo_ve_ust_bardaki_menu_basliklarinin_varligi_dogrulanir() {
-    ReusableMethods.isDisplayed(homePage.homepageLogo,"HomePage Logo Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.homepageLogo, "HomePage Logo Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.homeLinkUst, "HomePage üst bar'da Home Link Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.latestNewsText, "HomePage üst bar'da Latest News (Events) Link Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.aboutUsLink, "HomePage üst bar'da About us Link Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.GalleryLink, "HomePage üst bar'da Gallery Link Gorunur Degil");
+        ReusableMethods.isDisplayed(homePage.contactUsLinkUst, "HomePage üst bar'da Contact Us Link Gorunur Degil");
 
     }
+    @Given("Anasayfada logo tiklanir ve sayfanin yeniden cagrildigi \\(refresh) dogrulanir")
+    public void anasayfada_logo_tiklanir_ve_sayfanin_yeniden_cagrildigi_refresh_dogrulanir() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        homePage.homepageLogo.click();
+        WebElement refreshKontrol = wait.until(ExpectedConditions.visibilityOf(homePage.latestNews1stElement));
+        boolean isRefreshed;
+        if(refreshKontrol !=null){
+            isRefreshed=true;
+        }else{
+            isRefreshed=false;
+        }
+        Assert.assertTrue("Sayfa yenilenemedi", isRefreshed);
+
+
+    }
+
+    @Given("Anasayfada ust barda bulunan home linki tiklanir ve anasayfada kaldigi dogrulanir")
+    public void anasayfada_ust_barda_bulunan_home_linki_tiklanir_ve_anasayfada_kaldigi_dogrulanir() {
+        String expectedHomeUrl ="https://qa.heallifehospital.com/";
+        homePage.homeLinkUst.click();
+        String actualHomeUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expectedHomeUrl,actualHomeUrl,"ilgili sayfaya yönlendirmiyor");
+    }
+    @Given("Anasayfada ust barda Appointment linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_ust_barda_appointment_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        String expAppointmentUrl ="https://qa.heallifehospital.com/form/appointment";
+                homePage.appointmentLink.click();
+        String actualAppointmentUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expAppointmentUrl,actualAppointmentUrl,"ilgili sayfaya yönlendirmiyor");
+    }
+    @Given("Anasayfada ust barda Latest News linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_ust_barda_latest_news_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        String expLatestNewsUrl = "https://qa.heallifehospital.com/read/from-the-harvard-university-cell-science-course-prof-dr-alexander-smith-will-attend-the-cell-science-panel-to-be-held-in-our-hospital-as-a-speaker";
+        ReusableMethods.wait(3);
+        homePage.latestNews1stElement.click();
+        String actualLatestNewsUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expLatestNewsUrl, actualLatestNewsUrl, "ilgili sayfaya yönlendirilmedi");
+    }
+    @Given("Anasayfada About Us linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_about_us_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        homePage.aboutUsLink.click();
+        boolean isAboutUsLink ;
+        if(homePage.aboutHospitalsLink.isDisplayed()){
+            isAboutUsLink=true;
+        }else{
+            isAboutUsLink=false;
+        }
+        Assert.assertTrue("About Us linki calismiyor", isAboutUsLink);
+    }
+    @Given("Anasayfada Gallery linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_gallery_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        String expGalleryUrl = "https://qa.heallifehospital.com/page/gallery";
+        homePage.GalleryLink.click();
+        String actualGalleryUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expGalleryUrl, actualGalleryUrl, "ilgili sayfaya yönlendirilmedi");
+    }
+    @Given("Anasayfada Contact Us linki tiklanir ve ilgili sayfanin acildigi dogrulanir")
+    public void anasayfada_contact_us_linki_tiklanir_ve_ilgili_sayfanin_acildigi_dogrulanir() {
+        String expContactUsUrl = "https://qa.heallifehospital.com/page/contact-us";
+        homePage.contactUsLinkUst.click();
+        String actualContactUsUrl = Driver.getDriver().getCurrentUrl();
+        ReusableMethods.verifyAssertTrue(expContactUsUrl, actualContactUsUrl, "ilgili sayfaya yönlendirilmedi");
+    }
+
 
 }
