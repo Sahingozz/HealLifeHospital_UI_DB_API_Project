@@ -150,4 +150,38 @@ public class HomePage extends Base{
     //HomePage ->About Us -> About Hospitals linki
     @FindBy (xpath = "//*[text()='About Hospitals']")
     public WebElement aboutHospitalsLink;
+
+    // HomePage -> Contact Us -> NameText alani
+    @FindBy (xpath = "//input[@placeholder=' Name']")
+    public WebElement contactUsNameText ;
+
+    // HomePage -> Contact Us -> EmailText alani
+    @FindBy (xpath = "//input[@placeholder=' Email']")
+    public WebElement contactUsEmailText ;
+
+    // HomePage -> Contact Us -> SubjectText alani
+    @FindBy (xpath = "//input[@placeholder=' Subject']")
+    public WebElement contactUsSubjectText ;
+
+    // HomePage -> Contact Us -> DescriptionText alani
+    @FindBy (xpath = "//textarea[@name='description']")
+    public WebElement contactUsDecriptionText ;
+
+    // HomePage -> Contact Us -> Submit butonu
+    @FindBy (xpath = "//input[@type='submit']")
+    public WebElement contactUsSubmitButonu ;
+
+    // Contact Us -> Submit-> Mesaj gönderildi onay text
+    @FindBy (xpath = "//div[@class='alert alert-success']")
+    public WebElement contactUsMesajOnayText;
+
+    // Contact Us -> harita elementi
+    @FindBy (xpath = "//div[@class='mapwrapper=']")
+    public WebElement googleMaps;
+
+    // Contact Us -> harita elementi adres yazı kartı
+    @FindBy (xpath = "//div[@class='place-desc-large']")
+    public WebElement contactUsMapCard;
+
+
 }
