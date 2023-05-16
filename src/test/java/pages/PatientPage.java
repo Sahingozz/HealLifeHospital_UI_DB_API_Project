@@ -180,5 +180,38 @@ public class PatientPage extends Base {
     @FindBy (xpath = "(//*[text()='Action'])[1]")
     public WebElement action;
 
+    //Patient -> Blood Bank -> Blood Issue List -> Search Text Box
+
+    @FindBy (xpath = "(//input[@type='search'])[1]")
+    public WebElement bloodIssueSearchTextBox;
+
+    //Patient -> Blood Bank -> Blood Issue List -> Liste seçenek drop down menüsü
+
+    @FindBy (xpath = "//select[@name='DataTables_Table_0_length']")
+    public WebElement listeGorunumSecenek;
+
+    //Patient -> Blood Bank -> Blood Issue List -> Liste seçenek "100"
+
+    @FindBy (xpath = "//option[@value='100']")
+    public WebElement liste100;
+
+    //Patient -> Blood Bank -> Blood Issue List -> Liste seçenek "All"
+
+    @FindBy (xpath = "//option[@value='-1']")
+    public WebElement listeAll;
+
+    //Patient->Blood Bank-> Blood Issue List -> Action->View Payment
+    @FindBy (xpath = "//i[@class='fa fa-money']")
+    public WebElement viewPaymentLink ;
+
+
+    //Patient->Blood Bank-> Blood Issue List -> Action->Show (print)
+    @FindBy (xpath = "//i[@class='fa fa-print']")
+    public WebElement ShowLink ;
+
+    //Patient->Blood Bank-> Blood Issue List -> Action->Show (print)
+    @FindBy (xpath = "//*[text()='Pay']")
+    public WebElement PayLink ;
+
 }
 

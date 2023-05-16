@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import pages.AdminPage;
 import pages.DoctorPage;
 import pages.HomePage;
@@ -95,6 +96,64 @@ public class PatientStepdefinition {
 
     }
 
+    @Given("Blood Issue List bolumunde search text box oldugu dogrulanir")
+    public void blood_issue_list_bolumunde_search_text_box_oldugu_dogrulanir() {
+       patientPage.patientBloodBankLink.click();
+       ReusableMethods.wait(3);
+
+       Assert.assertTrue("Search Text Box yok veya text girişi yapilamiyor",
+               patientPage.bloodIssueSearchTextBox.isDisplayed() && patientPage.bloodIssueSearchTextBox.isEnabled());
+
+
+    }
+    @Given("Blood Issue List bolumunde {int}'erli veya hepsi birden listeleme secenekleri oldugu dogrulanir")
+    public void blood_issue_list_bolumunde_erli_veya_hepsi_birden_listeleme_secenekleri_oldugu_dogrulanir(Integer int1) {
+        patientPage.patientBloodBankLink.click();
+        ReusableMethods.wait(3);
+
+        Select select = new Select(patientPage.listeGorunumSecenek);
+        select.selectByIndex(0);
+        Assert.assertTrue("Liste görünümü için 100 seçeneği bulunmuyor",patientPage.liste100.getText().equals("100"));
+        select.selectByIndex(1);
+        Assert.assertTrue("Liste görünümü için All seçeneği bulunmuyor",patientPage.listeAll.getText().equals("All"));
+
+
+    }
+
+    @Given("Blood Issue List bolumunde liste basliklarina tiklanarak listeleme yapilabildigi dogrulanir")
+    public void blood_issue_list_bolumunde_liste_basliklarina_tiklanarak_listeleme_yapilabildigi_dogrulanir() {
+
+        patientPage.patientBloodBankLink.click();
+        ReusableMethods.wait(3);
+
+        ReusableMethods.isEnabled(patientPage.billNo, "Blood Issue bölümünde Bill No tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.issueDate, "Blood Issue bölümünde Issue Date tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.receivedTo, "Blood Issue bölümünde Received To tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.bloodGroup, "Blood Issue bölümünde Blood Group tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.Gender, "Blood Issue bölümünde Gender tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.donorName, "Blood Issue bölümünde Donor Name tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.amount$, "Blood Issue bölümünde Amount ($) tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.paidAmount$, "Blood Issue bölümünde Paid Amount ($) tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.balanceAmount$, "Blood Issue bölümünde Balance Amount ($) tiklanamiyor");
+        ReusableMethods.isEnabled(patientPage.action,  "Blood Issue bölümünde Action tiklanamiyor");
+    }
+
+    @Given("Blood Issue List kisminda Action basligindaki view,show ve pay butonlarinin calistigi dogrulanmali")
+    public void blood_issue_list_kisminda_action_basligindaki_view_show_ve_pay_butonlarinin_calistigi_dogrulanmali() {
+        patientPage.patientBloodBankLink.click();
+        ReusableMethods.wait(3);
+
+        Assert.assertTrue("View Payments butonu çalışmıyor, işlem yapılamıyor",
+                patientPage.viewPaymentLink.isDisplayed()&&patientPage.viewPaymentLink.isEnabled());
+
+        Assert.assertTrue("Show butonu çalışmıyor, işlem yapılamıyor",
+                patientPage.ShowLink.isDisplayed()&&patientPage.ShowLink.isEnabled());
+
+        Assert.assertTrue("Pay butonu çalışmıyor, işlem yapılamıyor",
+                patientPage.PayLink.isDisplayed()&&patientPage.PayLink.isEnabled());
+
+
+    }
 
 
 }
