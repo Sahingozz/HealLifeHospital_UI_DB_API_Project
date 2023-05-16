@@ -20,6 +20,10 @@ public class PatientPage extends Base{
     //-----------------Zafer
 
     //Patient -> user(patient) login username
-   // @FindBy (xpath = "//")
+    @FindBy (xpath = "//input[@name='username']")
+    public WebElement patientLoginUsername;
 
+    //Patient -> user(patient) login password
+    @FindBy (xpath = "//input[@name='password']")
+    public WebElement patientLoginPassword;
 }

@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -45,6 +46,12 @@ public class PatientStepdefinition {
     public void kullaniciBilgileriniGirerekHastaPanelineGirisYapar() {
 
     }
+    @Given("Blood Bank linkine tiklanir ve ilgili sayfaya yonlendirildigi dogrulanir")
+    public void blood_bank_linkine_tiklanir_ve_ilgili_sayfaya_yonlendirildigi_dogrulanir() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
 
 }
