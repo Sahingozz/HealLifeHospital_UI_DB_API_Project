@@ -134,5 +134,51 @@ public class PatientPage extends Base {
         }
     }
 
+    //Patient -> Blood Bank -> Blood Issue List ->Bill No
+    @FindBy (xpath = "(//*[text()='Bill No'])[1]")
+    public WebElement billNo;
+
+
+    //Patient -> Blood Bank -> Blood Issue List ->Received To
+    @FindBy (xpath = "(//*[text()='Received To'])[1]")
+    public WebElement receivedTo;
+
+
+    //Patient -> Blood Bank -> Blood Issue List ->Issue Date
+    @FindBy (xpath = "(//*[text()='Issue Date'])[1]")
+    public WebElement issueDate;
+
+    //Patient -> Blood Bank -> Blood Issue List ->Blood Group
+    @FindBy (xpath = "(//*[text()='Blood Group'])[1]")
+    public WebElement bloodGroup;
+
+    //Patient -> Blood Bank -> Blood Issue List -> Gender
+    @FindBy (xpath = "(//*[text()='Gender'])[1]")
+    public WebElement Gender;
+
+    //Patient -> Blood Bank -> Blood Issue List ->Donor Name
+    @FindBy (xpath = "(//*[text()='Donor Name'])[1]")
+    public WebElement donorName;
+
+    //Patient -> Blood Bank -> Blood Issue List ->Bags
+    @FindBy (xpath = "(//*[text()='Bags'])[1]")
+    public WebElement bags;
+
+    //Patient -> Blood Bank -> Blood Issue List ->Amount $
+    @FindBy (xpath = "(//*[text()='Amount ($)'])[1]")
+    public WebElement amount$;
+
+    //Patient -> Blood Bank -> Blood Issue List ->Paid Amount $
+    @FindBy (xpath = "(//*[text()='Paid Amount ($)'])[1]")
+    public WebElement paidAmount$;
+
+    //Patient -> Blood Bank -> Blood Issue List ->Balance Amount $
+    @FindBy (xpath = "(//*[text()='Balance Amount ($)'])[1]")
+    public WebElement balanceAmount$;
+
+    //Patient -> Blood Bank -> Blood Issue List ->Action
+    @FindBy (xpath = "(//*[text()='Action'])[1]")
+    public WebElement action;
+
 }
 

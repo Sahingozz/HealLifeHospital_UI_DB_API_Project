@@ -76,5 +76,25 @@ public class PatientStepdefinition {
                 && patientPage.componentIssueLink.isEnabled());
     }
 
+    @Given("Blood Issue List basliklarinin gorulur oldugu dogrulanir")
+    public void blood_issue_list_basliklarinin_gorulur_oldugu_dogrulanir() {
+        patientPage.patientBloodBankLink.click();
+        ReusableMethods.wait(3);
+
+        ReusableMethods.isDisplayed(patientPage.billNo, "Blood Issue bölümünde Bill No görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.issueDate, "Blood Issue bölümünde Issue Date görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.receivedTo, "Blood Issue bölümünde Received To görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.bloodGroup, "Blood Issue bölümünde Blood Group görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.Gender, "Blood Issue bölümünde Gender görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.donorName, "Blood Issue bölümünde Donor Name görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.amount$, "Blood Issue bölümünde Amount ($) görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.paidAmount$, "Blood Issue bölümünde Paid Amount ($) görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.balanceAmount$, "Blood Issue bölümünde Balance Amount ($) görünmüyor");
+        ReusableMethods.isDisplayed(patientPage.action,  "Blood Issue bölümünde Action görünmüyor");
+
+
+    }
+
+
 
 }

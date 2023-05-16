@@ -14,7 +14,14 @@ Feature: US_029 Kullanici (hastanin) kendi panelinde Kan Bankasi bolumunde islem
     Given Hasta profil bilgilerinin bulundugu dogrulanir
     And Browser kapatilir
 
-  @us_2903
+
   Scenario: TC_03 Blood Bank sayfasindan Blood Issue ve Component Issue sayfalarina gecis yapilabilmeli.
     Given Blood Issue ve Component Issue sayfalarinin varligi ve bu sayfalara gecilebildigi dogrulanir
     And Browser kapatilir
+
+  @us_2904
+
+  Scenario: TC_04 Blood Issue sayfasina gidilip, Blood Issue List basliklari gorulebilmeli
+    Given Blood Issue List basliklarinin gorulur oldugu dogrulanir
+    And Browser kapatilir
+
