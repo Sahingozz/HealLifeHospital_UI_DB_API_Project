@@ -36,8 +36,29 @@ Feature: US_029 Kullanici (hastanin) kendi panelinde Kan Bankasi bolumunde islem
     Given Blood Issue List bolumunde liste basliklarina tiklanarak listeleme yapilabildigi dogrulanir
     And Browser kapatilir
 
-  @us_2908
-
   Scenario: TC_08 Blood Bank bolumunde Blood Issue List'teki Action basligindaki islemler yapilalabilmeli.
     Given Blood Issue List kisminda Action basligindaki view,show ve pay butonlarinin calistigi dogrulanmali
+    And Browser kapatilir
+
+  Scenario: TC_09 Blood Bank bolumunde Component Issue List'teki basliklar gorulur olmali
+    Given Component Issue List kisminda tum basliklarin oldugu dogrulanmali
+    And Browser kapatilir
+
+  Scenario: TC_10 Blood Bank kisminda Component Issue List bolumunde arama yapmak icin search text box olmali
+    Given Component Issue List bolumunde search text box oldugu dogrulanir
+    And Browser kapatilir
+
+  Scenario: TC_11 Blood Bank bolumunde Component Issue List 100'erli veya hepsi birden listelenebilmeli
+    Given Component Issue List bolumunde 100'erli veya hepsi birden listeleme secenekleri oldugu dogrulanir
+    And Browser kapatilir
+
+
+
+  Scenario: TC_12 Blood Bank bolumunde Component Issue List basliklarindan hangisi tiklanirsa, ona gore listelenmeli
+    Given Component Issue List bolumunde liste basliklarina tiklanarak listeleme yapilabildigi dogrulanir
+    And Browser kapatilir
+
+  @us_2913
+  Scenario: TC_13 Blood Bank bolumunde Component Issue List bolumunde Action kisminda View, Print ve Pay olmadigi tespit edilmeli
+    Given Component Issue List bolumunde Action bolumunun bos oldugu dogrulanmali
     And Browser kapatilir
