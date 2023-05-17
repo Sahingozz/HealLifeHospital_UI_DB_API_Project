@@ -6,7 +6,10 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.AdminPage;
 import pages.DoctorPage;
 import pages.HomePage;
@@ -14,6 +17,9 @@ import pages.PatientPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.time.Duration;
+import java.util.Set;
 
 public class DoctorStepdefinition {
 
@@ -112,9 +118,152 @@ public class DoctorStepdefinition {
         select.selectByIndex(0);
         Assert.assertEquals("100",doctorPage.radiologyDDM100Text.getText());
         ReusableMethods.wait(2);
+        select.selectByIndex(1);
+        ReusableMethods.wait(3);
         Assert.assertEquals("All",doctorPage.radiologyDDMAllText.getText());
     }
+    @Given("Radio Bill List'te Balance Amount'da bulunan view Reports tiklanir ve detay sayfasi acildigi dogrulanir")
+    public void radio_bill_list_te_balance_Amount_da_bulunan_view_reports_tiklanir_ve_detay_sayfasi_acildigi_dogrulanir() {
+
+        doctorPage.radiologyLinki.click();
+        ReusableMethods.wait(3);
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(doctorPage.bilgiDetayLinkAlani).perform();
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(4));
+        wait.until(ExpectedConditions.visibilityOf(doctorPage.viewReportsLink));
+
+        doctorPage.viewReportsLink.click();
+
+        ReusableMethods.wait(2);
+
+        ReusableMethods.isDisplayed(doctorPage.viewReportsDetay,"View Reports'a tıklanınca Bill Details kısmı açılıyor");
+    }
+    @Given("Radio Bill List'te Bill Details bolumune gecilip, addEdit person kisminda bilgiler duzenlenebilmeli")
+    public void radio_bill_list_te_bill_details_bolumune_gecilip_addEdit_person_kisminda_bilgiler_duzenlenebilmeli() {
+        doctorPage.radiologyLinki.click();
+        ReusableMethods.wait(3);
+
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(doctorPage.bilgiDetayLinkAlani).perform();
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(4));
+        wait.until(ExpectedConditions.visibilityOf(doctorPage.viewReportsLink));
+
+        doctorPage.viewReportsLink.click();
+
+        ReusableMethods.wait(2);
+        doctorPage.addEditPerson.click();
+        ReusableMethods.wait(4);
+
+        ReusableMethods.isEnabled(doctorPage.sampleCollectedPerson,"Sample Collected Person alanına giriş yapılamıyor");
+        ReusableMethods.isEnabled(doctorPage.sampleCollectedDate,"Sample Collected Date alanına giriş yapılamıyor");
+        ReusableMethods.isEnabled(doctorPage.sampleCollectedDate,"Sample Collected Lab alanına giriş yapılamıyor");
+        ReusableMethods.isEnabled(doctorPage.sampleCollectedSaveButonu,"Sample Collection alanındaki save butonu aktif değil");
+
+
+        }
+    @Given("Radio Bill List bolumunden Radiology Test bolumune gecilebildigi dogrulanmalidir")
+    public void radio_bill_list_bolumunden_radiology_test_bolumune_gecilebildigi_dogrulanmalidir() {
+        doctorPage.radiologyLinki.click();
+        ReusableMethods.wait(3);
+
+        doctorPage.radiologyTestLink.click();
+        ReusableMethods.wait(3);
+
+        ReusableMethods.isDisplayed(doctorPage.radiologyTestText,"Radiology Test bolumune gecis yapilamamaktadir");
+        }
+    @Given("Radiology Test bolumunde test liste basliklarinin gorunurlugu dogrulanmalidir")
+    public void radiology_test_bolumunde_test_liste_basliklarinin_gorunurlugu_dogrulanmalidir() {
+        doctorPage.radiologyLinki.click();
+        ReusableMethods.wait(3);
+
+        doctorPage.radiologyTestLink.click();
+        ReusableMethods.wait(3);
+
+        ReusableMethods.isDisplayed(doctorPage.radiologyTestName,
+                "Radiology Test Name görünmüyor");
+        ReusableMethods.isDisplayed(doctorPage.radiologyShortName,
+                "Radiology Short Name görünmüyor");
+        ReusableMethods.isDisplayed(doctorPage.radiologyTestType,
+                "Radiology Test Type görünmüyor");
+        ReusableMethods.isDisplayed(doctorPage.radiologyCategory,
+                "Radiology Test Category görünmüyor");
+        ReusableMethods.isDisplayed(doctorPage.radiologySubCategory,
+                "Radiology Test Sub Category görünmüyor");
+        ReusableMethods.isDisplayed(doctorPage.radiologyReportDays,
+                "Radiology Test Report Days görünmüyor");
+        ReusableMethods.isDisplayed(doctorPage.radiologyTestTax,
+                "Radiology Test Tax (%) görünmüyor");
+        ReusableMethods.isDisplayed(doctorPage.radiologyTestCharge,
+                "Radiology Test Charge görünmüyor");
+        ReusableMethods.isDisplayed(doctorPage.radiologyTestAmount,
+                "Radiology Test Amount ($) görünmüyor");
+
+    }
+    @Given("Radiology linkinden Radiology Test sayfasina gidilip, sutun basliklarina gore siralama yapildigi dogrulanmali")
+    public void radiology_linkinden_radiology_test_sayfasina_gidilip_sutun_basliklarina_gore_siralama_yapildigi_dogrulanmali() {
+        doctorPage.radiologyLinki.click();
+        ReusableMethods.wait(3);
+
+        doctorPage.radiologyTestLink.click();
+        ReusableMethods.wait(3);
+
+        doctorPage.radiologyTestName.click();
+        ReusableMethods.wait(3);
+
+        Assert.assertEquals("aaaaa",doctorPage.radiologyTestListIlkBilgiText.getText());
+
+        ReusableMethods.isEnabled(doctorPage.radiologyShortName,
+                "Radiology Short Name elementi etkin değil");
+        ReusableMethods.isEnabled(doctorPage.radiologyTestType,
+                "Radiology Test Type elementi etkin değil");
+        ReusableMethods.isEnabled(doctorPage.radiologyCategory,
+                "Radiology Test Category elementi etkin değil");
+        ReusableMethods.isEnabled(doctorPage.radiologySubCategory,
+                "Radiology Test Sub Category elementi etkin değil");
+        ReusableMethods.isEnabled(doctorPage.radiologyReportDays,
+                "Radiology Test Report Days elementi etkin değil");
+        ReusableMethods.isEnabled(doctorPage.radiologyTestTax,
+                "Radiology Test Tax (%) elementi etkin değil");
+        ReusableMethods.isEnabled(doctorPage.radiologyTestCharge,
+                "Radiology Test Charge elementi etkin değil");
+        ReusableMethods.isEnabled(doctorPage.radiologyTestAmount,
+                "Radiology Test Amount ($) elementi etkin değil");
+
+
+    }
+
+    @Given("Radiology linkine gidilir, Radiology Test linki tiklanir ve Test List alaninda search text box oldugu dogrulanir")
+    public void radiology_linkine_gidilir_radiology_test_linki_tiklanir_ve_test_list_alaninda_search_text_box_oldugu_dogrulanir() {
+
+        doctorPage.radiologyLinki.click();
+        ReusableMethods.wait(3);
+
+        doctorPage.radiologyTestLink.click();
+        ReusableMethods.wait(3);
+
+        ReusableMethods.isEnabled(doctorPage.radiologyTestListSearchTextBox,"Radiology Test List search text box aktif degil");
+    }
+    @Given("Radiology Test List bolumunde listenin {int}'er veya All seklinde goruntuleme olanagi oldugu dogrulanir")
+    public void radiology_test_list_bolumunde_listenin_er_veya_all_seklinde_goruntuleme_olanagi_oldugu_dogrulanir(Integer int1) {
+        doctorPage.radiologyLinki.click();
+        ReusableMethods.wait(3);
+
+        Assert.assertEquals("100",doctorPage.radiologyTestDDM100Text.getText());
+        ReusableMethods.wait(2);
+
+        Assert.assertEquals("All",doctorPage.radiologyTestDDMAllText.getText());
+    }
+
 
 }
+
+
+
+
+
+
 
 
