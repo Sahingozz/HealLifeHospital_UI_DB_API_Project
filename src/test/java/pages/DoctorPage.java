@@ -52,7 +52,25 @@ public class DoctorPage extends Base{
     @FindBy (xpath = "(//*[text()='Balance Amount ($)'])[1]")
     public WebElement radiologyBalanceAmount$;
 
+    //Doctor->Radiology ->Bill No'ya göre siralamada ilk element
+    @FindBy (xpath = "//td[text()='RADIOB1']")
+    public WebElement billNoSiraIlkElement;
 
+    //Doctor->Radiology ->SearchTextBox
+    @FindBy (xpath = "//input[@type='search']")
+    public WebElement radiologySearchTextBox ;
+
+    //Doctor->Radiology ->liste drop down elementi
+    @FindBy (xpath = "//select[@name='testreport_length']")
+    public WebElement radiologyDDM;
+
+    //Doctor->Radiology ->liste 100 secenegiText
+    @FindBy (xpath = "//*[text()='100']")
+    public WebElement radiologyDDM100Text;
+
+    //Doctor->Radiology ->liste All secenegiText
+    @FindBy (xpath = "//*[text()='All']")
+    public WebElement radiologyDDMAllText;
 
 }
 
