@@ -169,6 +169,16 @@ public class DoctorPage extends Base{
     @FindBy (xpath = "//*[text()='All']")
     public WebElement radiologyTestDDMAllText;
 
+    //Doctor->Radiology ->RAdiology Test ->AMount $ altındaki bilgi alani
+    @FindBy (xpath = " (//td[@class=' dt-body-right'])[3]")
+    public WebElement radiologyTestListIlkBilgiElementi;
+
+    //Doctor->Radiology ->RAdiology Test ->Show Test Details link->Test Details text secenegiText
+    @FindBy (xpath = "//h4[text()='Test Details']")
+    public WebElement radiologyTestDetailsText;
+
+
+
 
 }
 

@@ -257,7 +257,24 @@ public class DoctorStepdefinition {
         Assert.assertEquals("All",doctorPage.radiologyTestDDMAllText.getText());
     }
 
+    @Given("Radiology Test List bolumunde show details linki tiklandiginda detaylarin gosterildigi dogrulanmali")
+    public void radiology_test_list_bolumunde_show_details_linki_tiklandiginda_detaylarin_gosterildigi_dogrulanmali() {
+        doctorPage.radiologyLinki.click();
+        ReusableMethods.wait(3);
+        doctorPage.radiologyTestLink.click();
+        ReusableMethods.wait(3);
 
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(doctorPage.radiologyTestListIlkBilgiElementi);
+        ReusableMethods.wait(3);
+        doctorPage.radiologyTestListIlkBilgiElementi.click();
+        ReusableMethods.wait(3);
+        ReusableMethods.isDisplayed(doctorPage.radiologyTestDetailsText,
+                "Radiology Test List'te show butonuna basinca detay sayfasi acilmiyor");
+
+
+
+    }
 }
 
 

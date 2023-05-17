@@ -59,7 +59,12 @@ Feature: US_062 Doktor bolumune giris yapildiginda Dashboard Sidebar'da bulunan 
     Given Radiology linkine gidilir, Radiology Test linki tiklanir ve Test List alaninda search text box oldugu dogrulanir
     And Browser kapatilir
 
-  @us_6212
+
   Scenario: TC_12 Radiology Test  List'te 100er veya All olarak goruntuleme imkani bulunmalidir
     Given Radiology Test List bolumunde listenin 100'er veya All seklinde goruntuleme olanagi oldugu dogrulanir
+    And Browser kapatilir
+
+  @us_6213
+  Scenario: TC_13 Radiology Test  List'te Show Details secenegi bulunup, tiklaninca detaylara ulasilabilmeli
+    Given Radiology Test List bolumunde show details linki tiklandiginda detaylarin gosterildigi dogrulanmali
     And Browser kapatilir
