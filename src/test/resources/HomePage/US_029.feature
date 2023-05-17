@@ -58,7 +58,7 @@ Feature: US_029 Kullanici (hastanin) kendi panelinde Kan Bankasi bolumunde islem
     Given Component Issue List bolumunde liste basliklarina tiklanarak listeleme yapilabildigi dogrulanir
     And Browser kapatilir
 
-  @us_2913
+
   Scenario: TC_13 Blood Bank bolumunde Component Issue List bolumunde Action kisminda View, Print ve Pay olmadigi tespit edilmeli
     Given Component Issue List bolumunde Action bolumunun bos oldugu dogrulanmali
     And Browser kapatilir
